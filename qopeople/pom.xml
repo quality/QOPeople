@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>qopeople-app</artifactId>
+		<groupId>com.qualityobjects</groupId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.qualityobjects</groupId>
+	<version>0.1-SNAPSHOT</version>
+	<artifactId>qopeople</artifactId>
+	<packaging>ear</packaging>
+
+	<name>ear EAR</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.qualityobjects</groupId>
+			<artifactId>qopeople-web</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.qualityobjects</groupId>
+			<artifactId>qopeople-core</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<type>ejb</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.4.2</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<displayName>Java EE Application</displayName>
+					<modules>
+						<webModule>
+							<artifactId>qopeople-web</artifactId>
+							<groupId>com.qualityobjects</groupId>
+							<contextRoot>/qopeople-web</contextRoot>
+						</webModule>
+						<ejbModule>
+							<artifactId>qopeople-core</artifactId>
+							<groupId>com.qualityobjects</groupId>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>qopeople-app</finalName>
+	</build>
+</project>
